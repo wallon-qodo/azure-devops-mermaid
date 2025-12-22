@@ -10,6 +10,7 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
+.qodo
 *.suo
 *.ntvs*
 *.njsproj
@@ -21,5 +22,5 @@ yarn-error.log*
 # Publishing guide (keep local only)
 PUBLISHING.md
 
-#
+# Build artifacts
 *.vsix

@@ -57,21 +57,21 @@ jobs:
         with:
           name: Release ${{ steps.get_version.outputs.TAG }}
           body: |
-            # Azure DevOps Mermaid ${{ steps.get_version.outputs.TAG }}
-            
+            # ADO Mermaid Viewer ${{ steps.get_version.outputs.TAG }}
+
             ## What's Changed
-            
+
             ${{ steps.changelog.outputs.CHANGELOG }}
-            
+
             ## Installation
-            
-            Install from the [Azure DevOps Marketplace](https://marketplace.visualstudio.com/items?itemName=jramos.azure-devops-mermaid)
-            
+
+            Install from the [Azure DevOps Marketplace](https://marketplace.visualstudio.com/items?itemName=wallon-qodo.ado-mermaid-viewer)
+
             Or download the `.vsix` file below and install manually.
-            
+
             ---
-            
-            **Full Changelog**: https://github.com/javiramos1/azure-devops-mermaid/blob/main/marketplace/changelog.md
+
+            **Full Changelog**: https://github.com/wallon-qodo/ado-mermaid-viewer/blob/main/marketplace/changelog.md
           files: |
             *.vsix
           draft: false

@@ -1,18 +1,15 @@
 {
     "manifestVersion": 1,
-    "id": "azure-devops-mermaid",
-    "version": "2.0.0",
-    "name": "Azure DevOps Mermaid",
+    "id": "ado-mermaid-viewer",
+    "version": "2.1.4",
+    "name": "ADO Mermaid Viewer",
     "description": "Professional Mermaid diagram renderer with GitHub Flavored Markdown support for Azure DevOps",
     "public": true,
-    "publisher": "javierramos1",
+    "publisher": "ADOMermaidViewer",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],
-    "scopes": [
-        "vso.code"
     ],
     "categories": [
         "Azure Repos"
@@ -31,8 +28,11 @@
     ],
     "repository": {
         "type": "git",
-        "uri": "https://github.com/javiramos1/azure-devops-mermaid"
+        "uri": "https://github.com/wallon-qodo/ado-mermaid-viewer"
     },
+    "scopes": [
+        "vso.code"
+    ],
     "icons": {
         "default": "marketplace/logo.png"
     },
@@ -45,6 +45,7 @@
                 "ms.vss-code-web.content-renderer-collection"
             ],
             "properties": {
+                "name": "Mermaid Diagram Renderer",
                 "uri": "dist/index.html",
                 "fileExtensions": [
                     "md"
@@ -54,6 +55,19 @@
                 ],
                 "defaultBehavior": "showRenderedContent",
                 "registeredObjectId": "mermaid_renderer"
+            }
+        },
+        {
+            "id": "mermaid-pr-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Displays Mermaid diagrams from PR description",
+            "targets": [
+                "ms.vss-code-web.pr-tabs"
+            ],
+            "properties": {
+                "name": "Mermaid Diagrams",
+                "uri": "dist/pr-tab.html",
+                "order": 100
             }
         }
     ],

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mermaid Diagrams</title>
+    <script>
+      console.log('[ADO Mermaid PR Tab] HTML FILE LOADED');
+      console.log('[ADO Mermaid PR Tab] Location:', window.location.href);
+    </script>
+    <style>
+      body {
+        font-family: "Segoe UI VSS (Regular)","Segoe UI","-apple-system",BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        color: rgba(0,0,0,1);
+        color: rgba(var(--palette-neutral-100,0, 0, 0),1);
+        font-size: 14px;
+        background-color: rgba(255,255,255,1);
+        background-color: var(--background-color,rgba(255, 255, 255, 1));
+        overflow: auto;
+        margin: 0;
+        padding: 20px;
+      }
+      .mermaid-container {
+        margin: 20px 0;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+      .mermaid-diagram {
+        margin: 20px 0;
+        text-align: center;
+      }
+      .no-diagrams {
+        padding: 40px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+      }
+      .error-message {
+        color: #d32f2f;
+        padding: 10px;
+        background: #ffebee;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      h2 {
+        margin-top: 0;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pr-mermaid-content">
+      <div class="no-diagrams">Loading Mermaid diagrams from PR description...</div>
+    </div>
+  </body>
+</html>

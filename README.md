@@ -1,15 +1,15 @@
-# Azure DevOps Mermaid 🎨
+# ADO Mermaid Viewer 🎨
 
 > Professional Mermaid diagram renderer for Azure DevOps with full GitHub Flavored Markdown support
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=jramos.azure-devops-mermaid)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=wallon-qodo.ado-mermaid-viewer)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![CI/CD](https://github.com/javiramos1/azure-devops-mermaid/actions/workflows/ci.yml/badge.svg)](https://github.com/javiramos1/azure-devops-mermaid/actions/workflows/ci.yml)
-[![Release](https://github.com/javiramos1/azure-devops-mermaid/actions/workflows/release.yml/badge.svg)](https://github.com/javiramos1/azure-devops-mermaid/actions/workflows/release.yml)
+[![CI/CD](https://github.com/wallon-qodo/ado-mermaid-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/wallon-qodo/ado-mermaid-viewer/actions/workflows/ci.yml)
+[![Release](https://github.com/wallon-qodo/ado-mermaid-viewer/actions/workflows/release.yml/badge.svg)](https://github.com/wallon-qodo/ado-mermaid-viewer/actions/workflows/release.yml)
 
 ## Overview
 
-**Azure DevOps Mermaid** is a powerful extension that brings beautiful, interactive Mermaid diagrams to your Azure DevOps repositories. Seamlessly integrated with Azure Repos, it automatically renders Mermaid code blocks in your Markdown files, transforming plain text into stunning visualizations.
+**ADO Mermaid Viewer** is a powerful extension that brings beautiful, interactive Mermaid diagrams to your Azure DevOps repositories. Seamlessly integrated with Azure Repos, it automatically renders Mermaid code blocks in your Markdown files, transforming plain text into stunning visualizations.
 
 > **Note**: This project is a fork of [rafaelprd/azure-devops-markdown-mermaid](https://github.com/rafaelprd/azure-devops-markdown-mermaid), which is no longer maintained. It has been completely rebranded, modernized, and greatly improved with:
 > - GitHub Flavored Markdown support (tables, task lists, strikethrough)
@@ -55,7 +55,7 @@
 ### Installation
 
 1. Visit the [Azure DevOps Marketplace](https://marketplace.visualstudio.com/azuredevops)
-2. Search for "Azure DevOps Mermaid" by jramos
+2. Search for "ADO Mermaid Viewer" by wallon-qodo
 3. Click **Get it free** and select your organization
 4. Follow the installation prompts
 
@@ -63,23 +63,23 @@
 
 Simply add Mermaid diagrams to your Markdown files using fenced code blocks:
 
-````markdown
-```mermaid
+\`\`\`\`markdown
+\`\`\`mermaid
 graph TD
     A[Start] --> B{Is it working?}
     B -->|Yes| C[Great!]
     B -->|No| D[Check docs]
     D --> A
-```
-````
+\`\`\`
+\`\`\`\`
 
 The diagram will automatically render when you view the Markdown file in Azure Repos.
 
 ### More Examples
 
 **Sequence Diagram:**
-````markdown
-```mermaid
+\`\`\`\`markdown
+\`\`\`mermaid
 sequenceDiagram
     participant User
     participant API
@@ -89,12 +89,12 @@ sequenceDiagram
     API->>Database: Query
     Database-->>API: Results
     API-->>User: Response
-```
-````
+\`\`\`
+\`\`\`\`
 
 **Gantt Chart:**
-````markdown
-```mermaid
+\`\`\`\`markdown
+\`\`\`mermaid
 gantt
     title Project Timeline
     dateFormat  YYYY-MM-DD
@@ -104,17 +104,17 @@ gantt
     section Phase 2
     Testing          :2024-03-15, 20d
     Deployment       :2024-04-05, 10d
-```
-````
+\`\`\`
+\`\`\`\`
 
 **Table Support:**
-```markdown
+\`\`\`markdown
 | Feature | Status | Notes |
 |---------|--------|-------|
 | Diagrams | ✅ | Fully supported |
 | Tables | ✅ | GFM compatible |
 | Styling | ✅ | Professional look |
-```
+\`\`\`
 
 ## 🛠️ Development
 
@@ -125,10 +125,10 @@ gantt
 
 ### Local Development
 
-```bash
+\`\`\`bash
 # Clone the repository
-git clone https://github.com/javiramos1/azure-devops-mermaid.git
-cd azure-devops-mermaid
+git clone https://github.com/wallon-qodo/ado-mermaid-viewer.git
+cd ado-mermaid-viewer
 
 # Install dependencies
 npm install
@@ -141,11 +141,11 @@ npm test
 
 # Build for production
 npm run build
-```
+\`\`\`
 
 **Or use the Makefile for convenience:**
 
-```bash
+\`\`\`bash
 # Install dependencies
 make install
 
@@ -169,17 +169,16 @@ make clean
 
 # Show all available commands
 make help
-```
+\`\`\`
 
 ### Project Structure
 
-```
-azure-devops-mermaid/
+\`\`\`
+ado-mermaid-viewer/
 ├── src/
 │   ├── index.js          # Extension entry point
 │   └── viewer.js         # Markdown/Mermaid renderer
 ├── marketplace/
-│   ├── overview.md       # Marketplace description
 │   ├── changelog.md      # Version history
 │   └── logo.png          # Extension icon
 ├── tests/
@@ -188,30 +187,30 @@ azure-devops-mermaid/
 ├── webpack.config.js     # Build configuration
 ├── vss-extension.json    # Extension manifest
 └── package.json          # Dependencies
-```
+\`\`\`
 
 ### Testing
 
 The extension includes comprehensive unit tests:
 
-```bash
+\`\`\`bash
 # Run all tests
 npm test
 
 # Run tests in watch mode
 npm run test:watch
-```
+\`\`\`
 
 ### Building
 
 To create a production build:
 
-```bash
+\`\`\`bash
 # Build and package extension
 npm run build
 
 # This creates a .vsix file ready for publishing
-```
+\`\`\`
 
 ## 📚 Documentation
 
@@ -222,13 +221,13 @@ No configuration needed! The extension works automatically once installed.
 ### Troubleshooting
 
 **Diagrams not rendering?**
-- Ensure your code block uses the `mermaid` language identifier
+- Ensure your code block uses the \`mermaid\` language identifier
 - Check that your Mermaid syntax is valid
 - Try refreshing the page
 
 **Tables not formatting correctly?**
 - Verify your table syntax follows GFM standards
-- Ensure proper spacing around pipes (`|`)
+- Ensure proper spacing around pipes (\`|\`)
 
 ### Browser Compatibility
 
@@ -241,9 +240,9 @@ No configuration needed! The extension works automatically once installed.
 Contributions are welcome! Please feel free to submit issues or pull requests.
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (\`git checkout -b feature/amazing-feature\`)
+3. Commit your changes (\`git commit -m 'Add amazing feature'\`)
+4. Push to the branch (\`git push origin feature/amazing-feature\`)
 5. Open a Pull Request
 
 ## 📝 Changelog
@@ -263,8 +262,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-- **Issues**: [GitHub Issues](https://github.com/javiramos1/azure-devops-mermaid/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/javiramos1/azure-devops-mermaid/discussions)
+- **Issues**: [GitHub Issues](https://github.com/wallon-qodo/ado-mermaid-viewer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/wallon-qodo/ado-mermaid-viewer/discussions)
 
 ## ⭐ Show Your Support
 
@@ -276,4 +275,4 @@ If you find this extension helpful, please consider:
 
 ---
 
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=jramos.azure-devops-mermaid) • [GitHub](https://github.com/javiramos1/azure-devops-mermaid) • [Issues](https://github.com/javiramos1/azure-devops-mermaid/issues)
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=wallon-qodo.ado-mermaid-viewer) • [GitHub](https://github.com/wallon-qodo/ado-mermaid-viewer) • [Issues](https://github.com/wallon-qodo/ado-mermaid-viewer/issues)

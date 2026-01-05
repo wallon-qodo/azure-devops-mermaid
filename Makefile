@@ -11,7 +11,7 @@ RED := \033[0;31m
 NC := \033[0m # No Color
 
 help: ## Show this help message
-	@echo "$(BLUE)Azure DevOps Mermaid - Available Commands$(NC)"
+	@echo "$(BLUE)ADO Mermaid Viewer - Available Commands$(NC)"
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "$(GREEN)%-20s$(NC) %s\n", $$1, $$2}'
 
@@ -35,7 +35,7 @@ test-watch: ## Run tests in watch mode
 build: ## Build the extension for production
 	@echo "$(BLUE)Building extension...$(NC)"
 	npm run build
-	@echo "$(GREEN)✓ Build complete: jramos.azure-devops-mermaid-2.0.0.vsix$(NC)"
+	@echo "$(GREEN)✓ Build complete: ADOMermaidViewer.ado-mermaid-viewer-2.0.1.vsix$(NC)"
 
 package: build ## Build and package the extension (alias for build)
 	@echo "$(GREEN)✓ Extension packaged$(NC)"
@@ -72,40 +72,42 @@ publish: build ## Build and publish to marketplace (requires PAT)
 		echo "$(RED)Error: PAT token required. Usage: make publish PAT=your_token$(NC)"; \
 		exit 1; \
 	fi
-	tfx extension publish --publisher jramos --token $(PAT) --vsix jramos.azure-devops-mermaid-2.0.0.vsix
+	tfx extension publish --publisher ADOMermaidViewer --token $(PAT) --vsix ADOMermaidViewer.ado-mermaid-viewer-2.0.1.vsix
 	@echo "$(GREEN)✓ Extension published$(NC)"
 
-update-version: ## Update version number (usage: make update-version VERSION=2.0.1)
+update-version: ## Update version number (usage: make update-version VERSION=2.0.2)
 	@if [ -z "$(VERSION)" ]; then \
-		echo "$(RED)Error: VERSION required. Usage: make update-version VERSION=2.0.1$(NC)"; \
+		echo "$(RED)Error: VERSION required. Usage: make update-version VERSION=2.0.2$(NC)"; \
 		exit 1; \
 	fi
 	@echo "$(BLUE)Updating version to $(VERSION)...$(NC)"
-	@sed -i 's/"version": "[^"]*"/"version": "$(VERSION)"/' package.json
-	@sed -i 's/"version": "[^"]*"/"version": "$(VERSION)"/' vss-extension.json
-	@echo "$(GREEN)✓ Version updated to $(VERSION)$(NC)"
-	@echo "$(YELLOW)Don't forget to update marketplace/changelog.md$(NC)"
+	@sed -i '' 's/"version": "[^"]*"/"version": "$(VERSION)"/' package.json
+	@sed -i '' 's/"version": "[^"]*"/"version": "$(VERSION)"/' vss-extension.json
+	@sed -i '' 's/v[0-9]\+\.[0-9]\+\.[0-9]\+/v$(VERSION)/g' Makefile
+	@sed -i '' 's/ado-mermaid-viewer-[0-9]\+\.[0-9]\+\.[0-9]\+/ado-mermaid-viewer-$(VERSION)/g' Makefile
+	@echo "$(GREEN)✓ Version updated to $(VERSION) in package.json, vss-extension.json, and Makefile$(NC)"
+	@echo "$(YELLOW)⚠ Don't forget to update marketplace/changelog.md$(NC)"
 
 check: ## Check if extension can be built
 	@echo "$(BLUE)Checking project health...$(NC)"
 	@npm list --depth=0 2>/dev/null || true
 	@echo ""
-	@if [ -f "jramos.azure-devops-mermaid-2.0.0.vsix" ]; then \
+	@if [ -f "ADOMermaidViewer.ado-mermaid-viewer-2.0.1.vsix" ]; then \
 		echo "$(GREEN)✓ Extension package exists$(NC)"; \
-		ls -lh jramos.azure-devops-mermaid-2.0.0.vsix; \
+		ls -lh ADOMermaidViewer.ado-mermaid-viewer-2.0.1.vsix; \
 	else \
 		echo "$(YELLOW)⚠ Extension package not built yet. Run 'make build'$(NC)"; \
 	fi
 
 info: ## Show project information
-	@echo "$(BLUE)Azure DevOps Mermaid v2.0.0$(NC)"
+	@echo "$(BLUE)ADO Mermaid Viewer v2.0.1$(NC)"
 	@echo ""
-	@echo "Publisher:    jramos"
-	@echo "Extension ID: azure-devops-mermaid"
+	@echo "Publisher:    ADOMermaidViewer"
+	@echo "Extension ID: ado-mermaid-viewer"
 	@echo "License:      MIT"
 	@echo ""
-	@echo "Repository:   https://github.com/javiramos1/azure-devops-mermaid"
-	@echo "Marketplace:  https://marketplace.visualstudio.com/items?itemName=jramos.azure-devops-mermaid"
+	@echo "Repository:   https://github.com/wallon-qodo/ado-mermaid-viewer"
+	@echo "Marketplace:  https://marketplace.visualstudio.com/items?itemName=ADOMermaidViewer.ado-mermaid-viewer"
 
 setup-tfx: ## Install TFX CLI globally
 	@echo "$(BLUE)Installing TFX CLI...$(NC)"
